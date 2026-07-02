@@ -37,7 +37,7 @@ struct AssetDetailSheet: View {
                     }
                 }
                 Spacer()
-                Button("Закрыть") { dismiss() }
+                Button(Strings.Common.close) { dismiss() }
                     .keyboardShortcut(.cancelAction)
             }
             .padding()
@@ -63,7 +63,7 @@ struct AssetDetailSheet: View {
                             MovementRow(movement: movement, category: movement.categoryId.flatMap(store.category(id:)))
                                 .contextMenu {
                                     if movement.paycheckId == nil {
-                                        Button("Удалить", systemImage: "trash", role: .destructive) {
+                                        Button(Strings.Common.delete, systemImage: "trash", role: .destructive) {
                                             movementPendingDeletion = movement
                                         }
                                     } else {
@@ -86,11 +86,11 @@ struct AssetDetailSheet: View {
             titleVisibility: .visible,
             presenting: movementPendingDeletion
         ) { movement in
-            Button("Удалить", role: .destructive) {
+            Button(Strings.Common.delete, role: .destructive) {
                 store.deleteAssetMovement(movement)
                 movementPendingDeletion = nil
             }
-            Button("Отмена", role: .cancel) {
+            Button(Strings.Common.cancel, role: .cancel) {
                 movementPendingDeletion = nil
             }
         }

@@ -542,14 +542,7 @@ final class BudgetStore: ObservableObject {
     // MARK: - Дефолты
 
     private func seedDefaults() {
-        categories = [
-            ExpenseCategory(name: "Бронь", emoji: "🛡", plannedAmount: .uah(13200), destination: .expense, sortOrder: 0),
-            ExpenseCategory(name: "Квартира", emoji: "🏠", plannedAmount: .uah(20000), destination: .expense, sortOrder: 1),
-            ExpenseCategory(name: "Маме", emoji: "👩", plannedAmount: .uah(5000), destination: .expense, sortOrder: 2),
-            ExpenseCategory(name: "Еда / гульки", emoji: "🍔", plannedAmount: .uah(14000), destination: .expense, sortOrder: 3),
-            ExpenseCategory(name: "Кредиты", emoji: "💳", plannedAmount: .uah(12000), destination: .expense, sortOrder: 4),
-            ExpenseCategory(name: "Отложить", emoji: "🏦", plannedAmount: .uah(25000), destination: .expense, sortOrder: 5)
-        ]
+        categories = AppConfig.Defaults.defaultCategories
     }
 }
 

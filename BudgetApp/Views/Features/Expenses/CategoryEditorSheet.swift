@@ -170,10 +170,10 @@ struct CategoryEditorSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
-                Button("Сохранить", action: save)
+                Button(Strings.Common.save, action: save)
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(!isValid)

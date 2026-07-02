@@ -101,7 +101,7 @@ struct GoalEditorSheet: View {
                 Section("Дедлайн") {
                     Toggle("Установить дату", isOn: $hasDeadline)
                     if hasDeadline {
-                        DatePicker("Дата", selection: $deadline, displayedComponents: .date)
+                        DatePicker(Strings.Forms.date, selection: $deadline, displayedComponents: .date)
                             .labelsHidden()
                     }
                 }
@@ -111,10 +111,10 @@ struct GoalEditorSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
-                Button("Сохранить", action: save)
+                Button(Strings.Common.save, action: save)
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(!isValid)

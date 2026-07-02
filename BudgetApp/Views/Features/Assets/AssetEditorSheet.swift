@@ -102,7 +102,7 @@ struct AssetEditorSheet: View {
                     }
                 }
 
-                Section("Сумма") {
+                Section(Strings.Forms.amount) {
                     MoneyField(amountText: $amountText, currency: $currency)
                 }
 
@@ -115,7 +115,7 @@ struct AssetEditorSheet: View {
                     }
                 }
 
-                Section("Заметка") {
+                Section(Strings.Forms.note) {
                     TextField("Например: долгосрочные сбережения", text: $note, axis: .vertical)
                         .lineLimit(2...4)
                 }
@@ -124,7 +124,7 @@ struct AssetEditorSheet: View {
                     Section("Ожидаемая дата получения") {
                         Toggle("Знаю дату", isOn: $hasExpectedDate)
                         if hasExpectedDate {
-                            DatePicker("Дата", selection: $expectedDate, displayedComponents: .date)
+                            DatePicker(Strings.Forms.date, selection: $expectedDate, displayedComponents: .date)
                                 .labelsHidden()
                         }
                     }
@@ -135,10 +135,10 @@ struct AssetEditorSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
-                Button("Сохранить", action: save)
+                Button(Strings.Common.save, action: save)
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(!isValid)
@@ -213,7 +213,7 @@ struct AssetMovementSheet: View {
                     .labelsHidden()
                 }
 
-                Section("Сумма") {
+                Section(Strings.Forms.amount) {
                     MoneyField(amountText: $amountText, currency: $currency)
                 }
 
@@ -221,8 +221,8 @@ struct AssetMovementSheet: View {
                     TextField(isWithdrawal ? "Например: на ремонт" : "Например: подарок", text: $source)
                 }
 
-                Section("Дата") {
-                    DatePicker("Дата", selection: $date, displayedComponents: .date)
+                Section(Strings.Forms.date) {
+                    DatePicker(Strings.Forms.date, selection: $date, displayedComponents: .date)
                         .labelsHidden()
                 }
             }
@@ -231,7 +231,7 @@ struct AssetMovementSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
                 Button(isWithdrawal ? "Снять" : "Пополнить", action: save)

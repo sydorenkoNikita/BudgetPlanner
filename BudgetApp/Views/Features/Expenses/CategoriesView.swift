@@ -33,7 +33,7 @@ struct CategoriesView: View {
                                 Button("Изменить", systemImage: "pencil") {
                                     editingCategory = category
                                 }
-                                Button("Удалить", systemImage: "trash", role: .destructive) {
+                                Button(Strings.Common.delete, systemImage: "trash", role: .destructive) {
                                     categoryPendingDeletion = category
                                 }
                             }
@@ -41,7 +41,7 @@ struct CategoriesView: View {
                                 Button(role: .destructive) {
                                     categoryPendingDeletion = category
                                 } label: {
-                                    Label("Удалить", systemImage: "trash")
+                                    Label(Strings.Common.delete, systemImage: "trash")
                                 }
                                 Button {
                                     editingCategory = category
@@ -62,7 +62,7 @@ struct CategoriesView: View {
                 Button {
                     isAddingCategory = true
                 } label: {
-                    Label("Добавить", systemImage: "plus")
+                    Label(Strings.Common.add, systemImage: "plus")
                 }
             }
         }
@@ -85,11 +85,11 @@ struct CategoriesView: View {
             titleVisibility: .visible,
             presenting: categoryPendingDeletion
         ) { category in
-            Button("Удалить", role: .destructive) {
+            Button(Strings.Common.delete, role: .destructive) {
                 store.deleteCategory(category)
                 categoryPendingDeletion = nil
             }
-            Button("Отмена", role: .cancel) {
+            Button(Strings.Common.cancel, role: .cancel) {
                 categoryPendingDeletion = nil
             }
         } message: { category in

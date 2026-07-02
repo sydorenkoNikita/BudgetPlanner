@@ -47,7 +47,7 @@ struct GoalDetailSheet: View {
                         .tint(.blue)
                 }
                 Spacer()
-                Button("Закрыть") { dismiss() }
+                Button(Strings.Common.close) { dismiss() }
                     .keyboardShortcut(.cancelAction)
             }
             .padding()
@@ -88,7 +88,7 @@ struct GoalDetailSheet: View {
                                         Button("Изменить", systemImage: "pencil") {
                                             editingContribution = contribution
                                         }
-                                        Button("Удалить", systemImage: "trash", role: .destructive) {
+                                        Button(Strings.Common.delete, systemImage: "trash", role: .destructive) {
                                             contributionPendingDeletion = contribution
                                         }
                                     } else {
@@ -119,11 +119,11 @@ struct GoalDetailSheet: View {
             titleVisibility: .visible,
             presenting: contributionPendingDeletion
         ) { contribution in
-            Button("Удалить", role: .destructive) {
+            Button(Strings.Common.delete, role: .destructive) {
                 store.deleteGoalContribution(contribution)
                 contributionPendingDeletion = nil
             }
-            Button("Отмена", role: .cancel) {
+            Button(Strings.Common.cancel, role: .cancel) {
                 contributionPendingDeletion = nil
             }
         }
@@ -240,8 +240,8 @@ struct GoalContributionSheet: View {
                     TextField("Например: подарок, бонус", text: $source)
                 }
 
-                Section("Дата") {
-                    DatePicker("Дата", selection: $date, displayedComponents: .date)
+                Section(Strings.Forms.date) {
+                    DatePicker(Strings.Forms.date, selection: $date, displayedComponents: .date)
                         .labelsHidden()
                 }
             }
@@ -250,10 +250,10 @@ struct GoalContributionSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
-                Button("Сохранить", action: save)
+                Button(Strings.Common.save, action: save)
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(!isValid)

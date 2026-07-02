@@ -25,9 +25,9 @@ struct ContentView: View {
                 SettingsView()
             case .none:
                 ContentUnavailableView(
-                    "Выберите раздел",
+                    Strings.ContentView.selectSection,
                     systemImage: "sidebar.left",
-                    description: Text("Откройте раздел в боковой панели")
+                    description: Text(Strings.ContentView.selectSectionDescription)
                 )
             }
         }
