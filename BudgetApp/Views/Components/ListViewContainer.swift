@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ListViewContainer<Item: Identifiable>: View {
+struct ListViewContainer<Item: Identifiable & Hashable>: View {
     @Binding var items: [Item]
     @State private var selectedItem: Item?
     @State private var editingItem: Item?
@@ -70,7 +70,7 @@ struct ListViewContainer<Item: Identifiable>: View {
 // MARK: - Preview
 #if DEBUG
 struct ListViewContainer_Previews: PreviewProvider {
-    struct SimpleItem: Identifiable {
+    struct SimpleItem: Identifiable, Hashable {
         let id = UUID()
         var name: String
     }
