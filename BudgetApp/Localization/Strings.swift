@@ -10,6 +10,18 @@ enum Strings {
         static let edit = "Редактировать"
         static let close = "Закрыть"
         static let noData = "Нет данных"
+        static let confirmation = "Вы уверены?"
+        static let apply = "Применить"
+    }
+
+    // MARK: - Delete confirmations
+    enum DeleteConfirmations {
+        static let goal = "Удалить цель?"
+        static let goalContribution = "Удалить пополнение?"
+        static let expense = "Удалить расход?"
+        static let category = "Удалить категорию?"
+        static let paycheck = "Удалить зарплату?"
+        static let assetMovement = "Удалить движение?"
     }
 
     // MARK: - ContentView
@@ -31,6 +43,19 @@ enum Strings {
     enum PaycheckAllocation {
         static let remainder = "Остаток"
         static let allocationComplete = "Распределение целиком"
+        static let title = "Распределение"
+        static let editTitle = "Изменить распределение"
+        static let resetToPlan = "Сбросить к плану"
+        static let allocated = "Распределено"
+        static let overBudget = "Перерасход"
+        static let sendRemainder = "Остаток отправить:"
+    }
+
+    // MARK: - DestinationKind
+    enum DestinationKind {
+        static let expense = "Расход"
+        static let asset = "Актив"
+        static let goal = "Цель"
     }
 
     // MARK: - Assets

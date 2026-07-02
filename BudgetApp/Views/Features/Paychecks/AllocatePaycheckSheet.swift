@@ -88,11 +88,11 @@ struct AllocatePaycheckSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
-                Button("Сбросить к плану", action: resetToPlan)
-                Button(isEditingExisting ? "Сохранить" : "Применить", action: apply)
+                Button(Strings.PaycheckAllocation.resetToPlan, action: resetToPlan)
+                Button(isEditingExisting ? Strings.Common.save : Strings.Common.apply, action: apply)
                     .buttonStyle(.borderedProminent)
                     .keyboardShortcut(.defaultAction)
                     .disabled(isOverBudget)
@@ -106,7 +106,7 @@ struct AllocatePaycheckSheet: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text(isEditingExisting ? "Изменить распределение" : "Распределение")
+                Text(isEditingExisting ? Strings.PaycheckAllocation.editTitle : Strings.PaycheckAllocation.title)
                     .font(.title2)
                     .fontWeight(.bold)
                 Spacer()
@@ -123,20 +123,20 @@ struct AllocatePaycheckSheet: View {
         VStack(spacing: 12) {
             HStack {
                 summaryColumn(
-                    title: "Распределено",
+                    title: Strings.PaycheckAllocation.allocated,
                     money: Money(allocatedSum, paycheckCurrency),
                     color: .primary
                 )
                 Spacer()
                 summaryColumn(
-                    title: remainder >= 0 ? "Остаток" : "Перерасход",
+                    title: remainder >= 0 ? Strings.PaycheckAllocation.remainder : Strings.PaycheckAllocation.overBudget,
                     money: Money(abs(remainder), paycheckCurrency),
                     color: remainder < 0 ? .red : (remainder > 0 ? .blue : .secondary)
                 )
             }
 
             HStack {
-                Text("Остаток отправить:")
+                Text(Strings.PaycheckAllocation.sendRemainder)
                     .fontWeight(.medium)
                 Picker("Куда", selection: $remainderSelection) {
                     ForEach(remainderOptions) { option in

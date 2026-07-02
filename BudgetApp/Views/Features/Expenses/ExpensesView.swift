@@ -46,7 +46,7 @@ struct ExpensesView: View {
                 Button {
                     isAddingExpense = true
                 } label: {
-                    Label("Добавить", systemImage: "plus")
+                    Label(Strings.Common.add, systemImage: "plus")
                 }
                 .disabled(spendableCategories.isEmpty)
             }
@@ -70,11 +70,11 @@ struct ExpensesView: View {
             titleVisibility: .visible,
             presenting: expensePendingDeletion
         ) { expense in
-            Button("Удалить", role: .destructive) {
+            Button(Strings.Common.delete, role: .destructive) {
                 store.deleteExpense(expense)
                 expensePendingDeletion = nil
             }
-            Button("Отмена", role: .cancel) {
+            Button(Strings.Common.cancel, role: .cancel) {
                 expensePendingDeletion = nil
             }
         }
@@ -121,7 +121,7 @@ private struct CategorySection: View {
                     .contextMenu {
                         if expense.paycheckId == nil {
                             Button("Изменить", systemImage: "pencil") { onEdit(expense) }
-                            Button("Удалить", systemImage: "trash", role: .destructive) {
+                            Button(Strings.Common.delete, systemImage: "trash", role: .destructive) {
                                 onDelete(expense)
                             }
                         } else {
@@ -133,7 +133,7 @@ private struct CategorySection: View {
                             Button(role: .destructive) {
                                 onDelete(expense)
                             } label: {
-                                Label("Удалить", systemImage: "trash")
+                                Label(Strings.Common.delete, systemImage: "trash")
                             }
                             Button {
                                 onEdit(expense)

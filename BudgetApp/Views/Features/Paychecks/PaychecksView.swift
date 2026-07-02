@@ -47,7 +47,7 @@ struct PaychecksView: View {
                 Button {
                     isAddingPaycheck = true
                 } label: {
-                    Label("Добавить", systemImage: "plus")
+                    Label(Strings.Common.add, systemImage: "plus")
                 }
             }
         }
@@ -79,11 +79,11 @@ struct PaychecksView: View {
             titleVisibility: .visible,
             presenting: paycheckPendingDeletion
         ) { paycheck in
-            Button("Удалить", role: .destructive) {
+            Button(Strings.Common.delete, role: .destructive) {
                 store.deletePaycheck(paycheck)
                 paycheckPendingDeletion = nil
             }
-            Button("Отмена", role: .cancel) {
+            Button(Strings.Common.cancel, role: .cancel) {
                 paycheckPendingDeletion = nil
             }
         } message: { paycheck in
@@ -151,7 +151,7 @@ private struct PaycheckCard: View {
                 MoneyView(money: paycheck.amount, primaryFont: .title3, primaryWeight: .bold, primaryColor: .green)
                 Menu {
                     Button("Изменить", systemImage: "pencil", action: onEdit)
-                    Button("Удалить", systemImage: "trash", role: .destructive, action: onDelete)
+                    Button(Strings.Common.delete, systemImage: "trash", role: .destructive, action: onDelete)
                 } label: {
                     Image(systemName: "ellipsis.circle")
                         .font(.title3)
@@ -269,7 +269,7 @@ private struct QuickSendSheet: View {
             Divider()
 
             HStack {
-                Button("Отмена") { dismiss() }
+                Button(Strings.Common.cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
                 Spacer()
                 Button("Отправить") {
