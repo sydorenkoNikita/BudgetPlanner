@@ -1,17 +1,14 @@
-//
-//  BudgetAppApp.swift
-//  BudgetApp
-//
-//  Created by Никита Сидоренко on 28.06.2026.
-//
-
 import SwiftUI
 
 @main
-struct BudgetAppApp: App {
+struct BudgetApp: App {
+    @StateObject private var store = BudgetStore()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(store)
+                .frame(minWidth: 760, minHeight: 600)
         }
     }
 }
