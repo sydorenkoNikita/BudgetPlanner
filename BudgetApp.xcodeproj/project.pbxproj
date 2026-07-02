@@ -92,6 +92,99 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B17A39E2FAF352F1CD0C5BDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02B97B9648113F8E787163CF /* Components */,
+				49FBA70D583BBA43067ABBF8 /* Features */,
+				D594E8135984A8E84C4D996D /* Shared */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02B97B9648113F8E787163CF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		49FBA70D583BBA43067ABBF8 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				EE41DF4DAB2D7B0CB5824BB8 /* Assets */,
+				F33A50AD6A12A79DD5B834DB /* Goals */,
+				A38409B2392FEFF5FA6F2EE8 /* Expenses */,
+				230727AF35ADA0192282ADD3 /* Paychecks */,
+				BBC5A0D2A0DA47E804E247F8 /* Forecast */,
+				A0A8C82CA0FF1E0AF198AA74 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		EE41DF4DAB2D7B0CB5824BB8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		F33A50AD6A12A79DD5B834DB /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		A38409B2392FEFF5FA6F2EE8 /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Expenses;
+			sourceTree = "<group>";
+		};
+		230727AF35ADA0192282ADD3 /* Paychecks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Paychecks;
+			sourceTree = "<group>";
+		};
+		BBC5A0D2A0DA47E804E247F8 /* Forecast */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Forecast;
+			sourceTree = "<group>";
+		};
+		A0A8C82CA0FF1E0AF198AA74 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D594E8135984A8E84C4D996D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C0CA75D6FA411A978EB3036D /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		4E525E4DF237BA0EF1F42FDC /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
