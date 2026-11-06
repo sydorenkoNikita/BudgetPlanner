@@ -30,7 +30,7 @@ Desired outcome (owner-reported): for a question like "saving for a house, want 
 
 ## 4. Why now
 
-No external trigger established. The repo holds a sketch the owner calls "just a draft" (owner-reported); it keeps all data in memory and saves nothing (source-verified: no persistence code found under `BudgetApp/`, commit `bc07369`).
+No external trigger established. The repo holds a sketch the owner calls "just a draft" (owner-reported); it keeps all data in memory and saves nothing (source-verified: no persistence code found under `BudgetApp/`, commit `01542c4`).
 
 ## 5. Out of scope
 
@@ -39,9 +39,9 @@ No external trigger established. The repo holds a sketch the owner calls "just a
 
 ## 6. Risks
 
-Weakest consequential assumption first. Critique: independent `sdd:devils-advocate` pass (interview mode, 3 findings); each code claim re-checked by the interviewer against `BudgetApp/Stores/BudgetStore.swift` at commit `bc07369`.
+Weakest consequential assumption first. Critique: independent `sdd:devils-advocate` pass (interview mode, 3 findings); each code claim re-checked by the interviewer against `BudgetApp/Stores/BudgetStore.swift` at commit `01542c4`.
 
-1. **The sketch's planning logic cannot show goal trade-offs.** The forecast adds each goal's own fixed monthly plan (`progress + monthlyPlan × n`) and doesn't tie goals to income or a shared surplus, so adding a vacation never moves the house date (source-verified, `BudgetStore.swift` `forecast(months:)` ~L478–500). Saving ("Отложить") is seeded as an expense (source-verified, ~L551). A single exchange rate is applied to all future months, so USD-priced goals funded from UAH salary get dates that look precise but can't be trusted (source-verified, `forecast` uses one `exchangeRate.uahPerUsd`). Consequence: reusing this logic leaves the main pain unsolved. It needs rework, not polish.
+1. **The sketch's planning logic cannot show goal trade-offs.** The forecast adds each goal's own fixed monthly plan (`progress + monthlyPlan × n`) and doesn't tie goals to income or a shared surplus, so adding a vacation never moves the house date (source-verified, `BudgetStore.swift` `forecast(months:)` ~L478–500). Saving ("Отложить") is seeded as an expense (source-verified, `BudgetApp/Config/AppConfig.swift` ~L61–66). A single exchange rate is applied to all future months, so USD-priced goals funded from UAH salary get dates that look precise but can't be trusted (source-verified, `forecast` uses one `exchangeRate.uahPerUsd`). Consequence: reusing this logic leaves the main pain unsolved. It needs rework, not polish.
 2. **Data model vs sync and two users.** Balances are mutated in place (`applyDelta` L168–172) and the double-allocation guard is a local flag (`isAllocated`) (source-verified). With Mac + iPhone sync and two people, offline edits could double-count or drift (hypothetical failure, not observed). The owner chose personal + shared budgets from the first version (owner-accepted), so the storage/sharing model has to support both from the start. Signal to watch: totals that differ between devices or don't equal the sum of history entries.
 3. **Monobank access for a sold product.** Personal per-user tokens are likely fine for the owner and partner. For a commercial app it is unknown whether personal tokens are allowed, or whether a corporate API (requirements unknown) and a server for webhooks are needed (unknown). History import is slow under the reported limits (assumption, secondary sources). Reversible as long as integration stays read-only and personal until this is checked.
 4. **Monobank API capabilities themselves are unverified.** Official docs returned HTTP 403 on 2026-11-06. All API claims come from secondary sources.
@@ -53,7 +53,7 @@ Evidence ledger:
 | Main pain is goal planning | owner-reported | interview 2026-11-06 | chosen from 4 options |
 | Integration = read-only view of spending | owner-reported | interview 2026-11-06 | owner corrected interviewer |
 | Sketch is macOS-only | source-verified | `BudgetApp.xcodeproj/project.pbxproj` | `SDKROOT = macosx`, target 15.2 |
-| Sketch has no persistence | source-verified | `BudgetApp/` grep, `BudgetStore.swift` @ `bc07369` | in-memory store only |
+| Sketch has no persistence | source-verified | `BudgetApp/` grep, `BudgetStore.swift` @ `01542c4` | in-memory store only |
 | Forecast is per-goal, no trade-off | source-verified | `BudgetStore.swift` ~L478–500 | fixed `monthlyPlan × n` |
 | Monobank API is read-only (no transfers/jar creation) | assumption | jentic.com/apis/monobank.ua/monobank (secondary), 2026-11-06 | absence in a third-party list is not proof; official docs 403 |
 | Personal X-Token per user; ~1 statement req/60 s; ~31-day window; one webhook per token | assumption | secondary sources + search snippets, 2026-11-06 | not checked against official docs |
